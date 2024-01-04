@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.myBtn{
+    @apply bg-orange-300 px-3 py-2 rounded font-semibold shadow-md hover:bg-orange-400
+}
+
+.customBg{
+    background:  linear-gradient(rgba(117, 117, 2, 0.631), rgba(47, 31, 1, 0.488), rgba(8, 5, 0, 0.859)), url(https://i.ibb.co/bRmK9HV/e-commerce.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
