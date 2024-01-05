@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .myBtn{
-    @apply bg-orange-300 px-3 py-2 rounded font-semibold shadow-md hover:bg-orange-400
+    @apply bg-orange-300 px-3 py-2 rounded font-semibold shadow-md hover:bg-orange-400 transition-all duration-300
 }
 
 .customBg{

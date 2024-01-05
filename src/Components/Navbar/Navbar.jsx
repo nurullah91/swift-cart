@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import logo from '../../assets/logo.jpg';
 import { FaSearch, FaShoppingCart } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
     const [cart, setCart] = useState([]);
-
+    const navigate = useNavigate();
     useEffect( ()=>{
         const cartItem = JSON.parse(localStorage.getItem("cart"));
         if(cartItem){
@@ -12,6 +13,11 @@ const Navbar = () => {
 
         }
     },[])
+
+    const handleLogOut = ()=>{
+        localStorage.removeItem("loginToken")
+        navigate("/login")
+    }
     return (
         <div>
             <div className="navbar bg-amber-100">
@@ -63,7 +69,7 @@ const Navbar = () => {
                         <span className='absolute -top-3 -right-3 text-white bg-orange-600 px-2 rounded-full'>{cart.length}</span>
 
                     </div>
-                    <button className="myBtn mx-2">Logout</button>
+                    <button onClick={handleLogOut} className="myBtn mx-2">Logout</button>
                 </div>
             </div>
         </div>
