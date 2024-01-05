@@ -34,7 +34,6 @@ const Login = () => {
     axios.post(loginUrl, loginInfo)
     .then(data=> {
       if(data.data.token){
-        console.log(data);
         localStorage.setItem("loginToken", data.data.token)
         toast.success('Login successful!');
         navigate('/')

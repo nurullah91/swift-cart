@@ -1,36 +1,15 @@
+/* eslint-disable react/prop-types */
 import { Rating } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
-import axios from 'axios';
-import { useEffect, useState } from "react";
 import { FaShoppingCart } from 'react-icons/fa';
 
 
-const Home = () => {
-    const [products, setProducts] = useState([]);
-
-
-    useEffect(() => {
-
-        const url = "https://dummyjson.com/products"
-        axios.get(url)
-            .then(data => setProducts(data.data.products))
-    }, [])
-
-    const handleCart = (product) => {
-        const previousCart = JSON.parse(localStorage.getItem("cart"))
-        const cart = []
-        if (previousCart) {
-            const updatedCart = [...previousCart, product]
-            localStorage.setItem("cart", JSON.stringify(updatedCart))
-
-        } else {
-            cart.push(product)
-            localStorage.setItem("cart", JSON.stringify(cart))
-        }
-    }
+const Home = ({products, handleCart}) => {
+ 
 
     return (
         <div className="w-11/12 lg:w-3/4 mx-auto my-12">
+         
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {
                     products.map(product => <div key={product.id} className="card w-full bg-base-100 shadow-xl">
