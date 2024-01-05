@@ -1,7 +1,17 @@
+import { useEffect, useState } from 'react';
 import logo from '../../assets/logo.jpg';
 import { FaSearch, FaShoppingCart } from "react-icons/fa";
 
 const Navbar = () => {
+    const [cart, setCart] = useState([]);
+
+    useEffect( ()=>{
+        const cartItem = JSON.parse(localStorage.getItem("cart"));
+        if(cartItem){
+            setCart(cartItem);
+
+        }
+    },[])
     return (
         <div>
             <div className="navbar bg-amber-100">
@@ -50,7 +60,7 @@ const Navbar = () => {
 
                     <div className='relative mr-4'>
                         <FaShoppingCart className='text-3xl' />
-                        <span className='absolute -top-3 -right-3 text-white bg-orange-600 px-2 rounded-full'>4</span>
+                        <span className='absolute -top-3 -right-3 text-white bg-orange-600 px-2 rounded-full'>{cart.length}</span>
 
                     </div>
                     <button className="myBtn mx-2">Logout</button>

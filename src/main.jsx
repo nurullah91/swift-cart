@@ -9,8 +9,7 @@ import {
 import Login from './Pages/Login/Login.jsx';
 import Home from './Pages/Home/Home.jsx';
 
-
-
+// routes
 const router = createBrowserRouter([
   {
     path: "/",
