@@ -11,17 +11,17 @@ import toast, { Toaster } from 'react-hot-toast';
 function App() {
 
   const [products, setProducts] = useState([]);
-const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState([]);
 
   useEffect(() => {
 
     const url = "https://dummyjson.com/products"
     axios.get(url)
       .then(data => setProducts(data.data.products))
-      .catch(err=>console.log(err))
+      .catch(err => console.log(err))
   }, [])
 
-  
+
   // handling cart from product cart button;
   const handleCart = (product) => {
     const previousCart = JSON.parse(localStorage.getItem("cart"))
@@ -47,28 +47,29 @@ const [cart, setCart] = useState([]);
     const url = `https://dummyjson.com/products/search?q=${searchText}`
     axios.get(url)
       .then(data => setProducts(data.data.products))
-      .catch(err=>console.log(err))
+      .catch(err => console.log(err))
   }
 
-// Handle Sorting based on price from nav bar
+  // Handle Sorting based on price from nav bar
 const handleSort = (target) => {
-  if(target === "low"){
-    const lowSortedProducts = products.sort( (a, b) => a.price - b.price)
-    console.log(lowSortedProducts);
-    setProducts(lowSortedProducts)
+  if (target === "low") {
+    const lowSortedProducts = [...products].sort((a, b) => a.price - b.price);
+    setProducts(lowSortedProducts);
+  } else {
+    const highSortedProducts = [...products].sort((a, b) => b.price - a.price);
+    setProducts(highSortedProducts);
   }
-  else{
-   const highSortedProducts =  products.sort( (a, b) => b.price - a.price)
-   console.log(highSortedProducts);
-   setProducts(highSortedProducts)
-  }
-}
+};
+
+
+
+
   return (
     <>
       {/* Toaster */}
       <Toaster />
 
-      <Navbar handleSearch={handleSearch} cart={cart} handleSort={handleSort}/>
+      <Navbar handleSearch={handleSearch} cart={cart} handleSort={handleSort} />
       <div className='min-h-[calc(100vh-68px)]'>
         <Home products={products} handleCart={handleCart} />
       </div>

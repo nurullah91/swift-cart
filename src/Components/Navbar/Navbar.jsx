@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 // import { useEffect, useState } from 'react';
 import logo from '../../assets/logo.jpg';
-import { FaSearch, FaShoppingCart } from "react-icons/fa";
+import { FaAngleDown, FaSearch, FaShoppingCart } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
-
+import { IoIosArrowUp } from "react-icons/io";
 const Navbar = ({ handleSearch, cart, handleSort }) => {
     const navigate = useNavigate();
     // const [cart, setCart] = useState([]);
@@ -28,9 +28,8 @@ const Navbar = ({ handleSearch, cart, handleSort }) => {
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </div>
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-amber-100 rounded-box ">
-                            <li><a>Item 1</a></li>
-                            <li><a>Item 2</a></li>
-                            <li><button onClick={()=> handleSort("low")}>Sort by low price</button></li>
+                            <li><button onClick={()=> handleSort("high")}>High price <IoIosArrowUp /></button></li>
+                            <li><button onClick={()=> handleSort("low")}>Low price <FaAngleDown /></button></li>
                             {/* search form */}
                             <form onSubmit={handleSearch}>
                                 <div className="flex items-center">
@@ -46,9 +45,8 @@ const Navbar = ({ handleSearch, cart, handleSort }) => {
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
-                        <li><a>Item 1</a></li>
-                        <li><a>Item 2</a></li>
-                        <li><button onClick={()=> handleSort("low")}>Sort by low price</button></li>
+                        <li><button onClick={()=> handleSort("high")}>High price <IoIosArrowUp /></button></li>
+                        <li><button onClick={()=> handleSort("low")}>Low price <FaAngleDown /></button></li>
                     </ul>
                     {/* search form */}
                     <form onSubmit={handleSearch}>
