@@ -1,19 +1,28 @@
 /* eslint-disable react/prop-types */
 import { Rating } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
+import Aos from 'aos';
+import 'aos/dist/aos.css'; 
 import { FaShoppingCart } from 'react-icons/fa';
 
 
 const Home = ({products, handleCart}) => {
  
+    Aos.init({
+        offset: 200,
+        duration: 600,
+        easing: 'ease-in-sine',
+        delay: 100,
+      });
+
 
     return (
         <div className="w-11/12 lg:w-3/4 mx-auto my-12">
          
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 overflow-hidden">
                 {
-                    products.map(product => <div key={product.id} className="card w-full bg-base-100 shadow-xl">
-                        <figure><img className="" src={product.thumbnail} alt="Product" /></figure>
+                    products.map(product => <div key={product.id} data-aos="zoom-in-down" className="card w-full bg-base-100 shadow-xl overflow-hidden">
+                        <figure><img className="hover:scale-110 transition-all duration-300" src={product.thumbnail} alt="Product" /></figure>
                         <div className="card-body">
 
                             <div className="">
