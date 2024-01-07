@@ -25,15 +25,17 @@ function App() {
   // handling cart from product cart button;
   const handleCart = (product) => {
     const previousCart = JSON.parse(localStorage.getItem("cart"))
-    const cart = []
+    const cartItem = []
     if (previousCart) {
       const updatedCart = [...previousCart, product]
       localStorage.setItem("cart", JSON.stringify(updatedCart))
+      setCart(updatedCart);
       toast.success('Item Added to cart');
 
     } else {
-      cart.push(product)
-      localStorage.setItem("cart", JSON.stringify(cart))
+      cartItem.push(product)
+      localStorage.setItem("cart", JSON.stringify(cartItem))
+      setCart(cartItem)
       toast.success('Item Added to cart');
     }
   }
@@ -51,15 +53,15 @@ function App() {
   }
 
   // Handle Sorting based on price from nav bar
-const handleSort = (target) => {
-  if (target === "low") {
-    const lowSortedProducts = [...products].sort((a, b) => a.price - b.price);
-    setProducts(lowSortedProducts);
-  } else {
-    const highSortedProducts = [...products].sort((a, b) => b.price - a.price);
-    setProducts(highSortedProducts);
-  }
-};
+  const handleSort = (target) => {
+    if (target === "low") {
+      const lowSortedProducts = [...products].sort((a, b) => a.price - b.price);
+      setProducts(lowSortedProducts);
+    } else {
+      const highSortedProducts = [...products].sort((a, b) => b.price - a.price);
+      setProducts(highSortedProducts);
+    }
+  };
 
 
 

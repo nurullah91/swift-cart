@@ -41,7 +41,7 @@ const Navbar = ({ handleSearch, cart, handleSort }) => {
                         </ul>
 
                     </div>
-                    <img className="btn btn-ghost rounded" src={logo} alt="logo" />
+                    <a href='/'><img className="btn btn-ghost rounded" src={logo} alt="logo" /></a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
